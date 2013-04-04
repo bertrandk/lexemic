@@ -7,6 +7,12 @@
 (defn tab-tokenizer [str]
   (split str #"\t"))
 
+(defn whitespace-tokenizer [str]
+  (split str #"\s+"))
+
+(defn blankline-tokenizer [str]
+  (split str #"\s*\n\s*\n\s*"))
+
 (defn char-tokenizer [str]
   (vec (seq str)))
 
