@@ -1,4 +1,4 @@
-(ns cljs-nlp.sentiment.core
+(ns cljs-nlp.sentiment.simple
   (:use [clojure.string :only [lower-case split]]
         [cljs.reader :only [read-string]]))
 
