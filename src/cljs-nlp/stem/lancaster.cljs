@@ -1,4 +1,5 @@
-(ns cljs-nlp.stem.lancaster)
+(ns cljs-nlp.stem.lancaster
+  (:use [clojure.string :only [lower-case]]))
 
 (def rules [{"continuation" false "intact" true "pattern" "ia" "size" "2"}
             {"continuation" false "intact" true "pattern" "a" "size" "1"}
@@ -115,3 +116,56 @@
             {"continuation" true "intact" false "pattern" "acy" "size" "3"}
             {"continuation" true "intact" false "pattern" "iz" "size" "2"}
             {"appendage" "s" "continuation" false "intact" false "pattern" "yz" "size" "1"}])
+
+(defn group-rules [coll]
+  (let [alpha (comp last "pattern")]
+    (group-by alpha coll)))
+
+(defn contains-vowel? [s]
+  (if-let [candidate (first s)]
+    (if (#{"a" "e" "i" "o" "u" "y"} candidate)
+      true
+      (recur (rest s)))
+    false))
+
+(defn acceptable? [stemmed-word]
+  (let [length (count stemmed-word)
+        first-letter (first stemmed-word)]
+    (if (contains-vowel? first-letter)
+      (>= length 2)
+      (if (>= length 3)
+        (contains-vowel? stemmed-word)
+        false))))
+
+(defn apply-stem-rule [word rule]
+  (let [stem-size (rule "size")
+        stemmed-word (subs word 0 (- (count word) stem-size))
+        appendage (rule "appendage")
+        result (str stemmed-word appendage)]
+    (when (acceptable? stemmed-word)
+      result)))
+
+(defn process-rules [word rules intact?]
+  (if-let [rule (first rules)]
+    (let [word-length (count word)
+          intact-flag (rule "intact")
+          pattern (rule "pattern")
+          pattern-length (count pattern)]
+      (if (and (or intact? (not intact-flag)) (= (subs word (- word-length pattern-length)) pattern))
+        (if-let [stemmed-word (apply-stem-rule word rule)]
+          (if (rule "continuation")
+            (stem stemmed-word false)
+            stemmed-word)
+          (recur word (rest rules) intact?))
+        (recur word (rest rules) intact?)))
+    word))
+
+(defn stem 
+  ([word] (stem word true))
+  ([word intact?] (stem word intact? (group-rules rules)))
+  ([word intact? dict]
+   (let [last-letter (last word)
+         rules (last-letter dict)]
+     (if-not (nil? rules)
+       (process-rules word rules intact?)
+       word))))
