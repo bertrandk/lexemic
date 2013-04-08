@@ -164,7 +164,8 @@
   ([word] (stem word true))
   ([word intact?] (stem word intact? (group-rules rules)))
   ([word intact? dict]
-   (let [last-letter (last word)
+   (let [word (lower-case word)
+         last-letter (last word)
          rules (last-letter dict)]
      (if-not (nil? rules)
        (process-rules word rules intact?)
