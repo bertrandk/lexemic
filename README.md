@@ -1,4 +1,4 @@
 lexemic
 ========
 
-Clojurescript tools for working with human language data.
+Tools for working with human language data.
