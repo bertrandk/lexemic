@@ -5,7 +5,7 @@ all: build
 release: tag publish
 
 build:
-	$(CLJSC) ./src/lexemic/core.cljs '{:target :nodejs}' > index.js
+	$(CLJSC) ./src '{:target :nodejs}' > index.js
 
 clean:
 	rm -rf ./out
