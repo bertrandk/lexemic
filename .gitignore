@@ -5,3 +5,4 @@ pom.xml
 /classes/
 /targets/
 .lein-deps-sum
+*.js
