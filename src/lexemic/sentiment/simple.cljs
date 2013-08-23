@@ -3,13 +3,13 @@
         [cljs.reader :only [read-string]])
   (:require [lexemic.data.sentiment :as data]))
 
-(defn collect-matches [tokens lexicon]
+(defn- collect-matches [tokens lexicon]
   (vec
    (for [token tokens
          :when (contains? lexicon token)]
      token)))
 
-(defn rate [phrase lexicon]
+(defn- rate [phrase lexicon]
   (let [tokens (split (lower-case phrase) #"\s+")
         matches (collect-matches tokens lexicon)
         hits (count matches)])
@@ -23,7 +23,7 @@
 
 (defn analyse [phrase]
   (let [negative (negative-rating phrase)
-        positive (positive-ration phrase)]
+        positive (positive-rating phrase)]
     {:score (- (positive :score) (negative :score))
      :comparative (- (positive :comparative) (negative :comparative))
      :positive positive
