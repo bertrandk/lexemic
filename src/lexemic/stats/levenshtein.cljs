@@ -1,4 +1,4 @@
-(ns cljs-nlp.stats.levenshtein
+(ns lexemic.stats.levenshtein
   (:use [clojure.string :only [blanks?]]))
 
 (defn create-element

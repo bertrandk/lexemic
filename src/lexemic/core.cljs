@@ -1,4 +1,4 @@
-(ns cljs-nlp.core)
+(ns lexemic.core)
 
 (defn -main [& command])
 

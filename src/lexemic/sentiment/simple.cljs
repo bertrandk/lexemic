@@ -1,7 +1,7 @@
-(ns cljs-nlp.sentiment.simple
+(ns lexemic.sentiment.simple
   (:use [clojure.string :only [lower-case split]]
         [cljs.reader :only [read-string]])
-  (:require [cljs-nlp.data.sentiment :as data]))
+  (:require [lexemic.data.sentiment :as data]))
 
 (defn collect-matches [tokens lexicon]
   (vec

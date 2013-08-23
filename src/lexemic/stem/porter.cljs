@@ -1,4 +1,4 @@
-(ns cljs-nlp.stem.porter
+(ns lexemic.stem.porter
   (:use [clojure.string :only [lower-case replace]]))
 
 (def step2-map {"ational" "ate"

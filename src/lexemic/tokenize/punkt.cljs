@@ -1,4 +1,4 @@
-(ns cljs-nlp.tokenize.s-expression)
+(ns lexemic.tokenize.punkt)
 
 (defn tokenize [s]
   (throw (js/Error. "Not yet implemented!")))

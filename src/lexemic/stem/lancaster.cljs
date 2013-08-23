@@ -1,4 +1,4 @@
-(ns cljs-nlp.stem.lancaster
+(ns lexemic.stem.lancaster
   (:use [clojure.string :only [lower-case]]))
 
 (def rules [{"continuation" false "intact" true "pattern" "ia" "size" "2"}

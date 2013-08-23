@@ -1,4 +1,4 @@
-(ns cljs-nlp.tokenize.simple
+(ns lexemic.tokenize.simple
   (:use [clojure.string :only [split]]))
 
 (defn space-tokenizer [s]

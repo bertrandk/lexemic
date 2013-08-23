@@ -1,4 +1,4 @@
-(ns cljs-nlp.tokenize.treebank
+(ns lexemic.tokenize.treebank
   (:use [clojure.string :only [split replace trim]]))
 
 (defn replace-starting-quotes [s]

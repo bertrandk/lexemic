@@ -1,4 +1,4 @@
-(ns cljs-nlp.data.sentiment)
+(ns lexemic.data.sentiment)
 
 ;; c.f. http://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html
 
