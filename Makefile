@@ -16,7 +16,8 @@ status:
 	if test "x$${status}" = x; then \
 		echo Working directory is clean. >&2; \
 	else \
-		$(error Working directory is dirty. You need to commit any modified files before continuing); \
+		echo Working directory is dirty. You need to commit any modified files before continuing. >&2; \
+		false; \
 	fi
 
 tag:
