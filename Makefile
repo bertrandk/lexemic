@@ -2,7 +2,7 @@ CLJSC = $(CLOJURESCRIPT_HOME)/bin/cljsc
 VERSION = `node -e "console.log(require('./package.json').version)"`
 
 all: build
-release: status tag publish
+release: tag publish
 
 build:
 	$(CLJSC) ./src/lexemic/core.cljs '{:target :nodejs}' > index.js
@@ -20,9 +20,9 @@ status:
 		false; \
 	fi
 
-tag:
+tag: status
 	git tag -a v$(VERSION) -m "Tagging v$(VERSION)"
 	git push --tags
 
-public:
+public: status
 	npm publish
