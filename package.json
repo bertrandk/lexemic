@@ -1,0 +1,41 @@
+{
+  "name": "lexemic",
+  "version": "0.0.1",
+  "description": "Tools for working with human language data.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bertrandk/lexemic.git"
+  },
+  "keywords": [
+    "natural",
+    "language",
+    "processing",
+    "nlp",
+    "machine",
+    "learning",
+    "speech",
+    "token",
+    "sentence",
+    "tag",
+    "extraction",
+    "chunking",
+    "parsing",
+    "coreference",
+    "classification",
+    "tokenization",
+    "stemming",
+    "tagging",
+    "semantic",
+    "text",
+    "linguistic"
+  ],
+  "author": "bertrandk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bertrandk/lexemic/issues"
+  }
+}
