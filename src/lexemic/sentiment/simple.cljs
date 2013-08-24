@@ -3,16 +3,15 @@
   (:require [lexemic.data.sentiment :as data]))
 
 (defn- collect-matches [tokens lexicon]
-  (vec
-   (for [token tokens
-         :when (contains? lexicon token)]
-     token)))
+  (for [token tokens
+        :when (contains? lexicon token)]
+    token))
 
 (defn- rate [phrase lexicon]
   (let [tokens (split (lower-case phrase) #"\s+")
         matches (collect-matches tokens lexicon)
-        hits (count matches)])
-  {:score hits :comparative (/ hits (count tokens)) :words words})
+        hits (count matches)]
+    {:score hits :comparative (/ hits (count tokens)) :words matches}))
 
 (defn negative-rating [phrase]
   (rate phrase data/negative-words))
@@ -23,7 +22,7 @@
 (defn analyse [phrase]
   (let [negative (negative-rating phrase)
         positive (positive-rating phrase)]
-    {:score (- (positive :score) (negative :score))
-     :comparative (- (positive :comparative) (negative :comparative))
+    {:score (- (get positive :score) (get negative :score))
+     :comparative (- (get positive :comparative) (get negative :comparative))
      :positive positive
      :negative negative}))
