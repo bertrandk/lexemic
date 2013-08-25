@@ -1,11 +1,14 @@
 CLJSC = $(CLOJURESCRIPT_HOME)/bin/cljsc
 VERSION = `node -e "console.log(require('./package.json').version)"`
 
-all: build
-release: tag publish
+all: build-dev
+release: build-prod tag publish
 
-build:
-	$(CLJSC) ./src '{:target :nodejs}' > index.js
+build-dev:
+	$(CLJSC) ./src '{:optimizations :simple :pretty-print true :target :nodejs}' > index.js
+
+build-prod:
+	$(CLJSC) ./src '{:optimizations :advanced :target :nodejs}' > index.js
 
 clean:
 	rm -rf ./out
