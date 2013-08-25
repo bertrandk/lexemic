@@ -21,6 +21,11 @@ Tools for working with human language data.
 
 ## Usage
 
+```
+$ lexemic [command] [implementation] [target]
+```
+NOTE: The `target` may be an inline string or the path to a text file encoded as UTF-8.
+
 ### Sentiment analysis
 
 ```
@@ -38,7 +43,6 @@ $ lexemic sentiment "I am mad at you." # => {
                                                         :words (mad)  
                                                        }  
                                              }
-$ lexemic sentiment /path/to/file.txt  # => { ... }
 ```
 
 ## Issues
