@@ -17,7 +17,7 @@ clean:
 status:
 	@status=$$(git status --porcelain --untracked-files=no); \
 	if test "x$${status}" = x; then \
-		echo Working directory is clean. >&2; \
+		echo Working directory is clean. >&1; \
 	else \
 		echo Working directory is dirty. You need to commit any modified files before continuing. >&2; \
 		false; \
