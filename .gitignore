@@ -7,4 +7,3 @@ pom.xml
 /targets/
 .lein-deps-sum
 *.js
-/bin

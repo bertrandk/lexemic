@@ -5,8 +5,7 @@ all: build-dev
 release: build-prod tag publish
 
 build-dev:
-	$(CLJSC) ./src '{:optimizations :simple :pretty-print true :target :nodejs}' > ./bin/lexemic
-	chmod +x ./bin/lexemic
+	$(CLJSC) ./src '{:optimizations :simple :pretty-print true :target :nodejs}' > ./lexemic.js
 
 build-prod:
 	$(CLJSC) ./src '{:optimizations :advanced :target :nodejs}' > ./bin/lexemic
@@ -14,7 +13,7 @@ build-prod:
 
 clean:
 	rm -rf ./out
-	rm index.js
+	rm lexemic.js
 
 status:
 	@status=$$(git status --porcelain --untracked-files=no); \
