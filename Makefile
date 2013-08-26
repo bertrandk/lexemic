@@ -2,7 +2,7 @@ CLJSC = $(CLOJURESCRIPT_HOME)/bin/cljsc
 VERSION = `node -e "console.log(require('./package.json').version)"`
 
 all: build-dev
-release: build-prod tag publish
+release: build-prod commit-build tag publish
 
 build-dev:
 	$(CLJSC) ./src '{:optimizations :whitespace :pretty-print true :target :nodejs}' > ./lexemic.js
@@ -23,6 +23,10 @@ status:
 		echo Working directory is dirty. You need to commit any modified files before continuing. >&2; \
 		false; \
 	fi
+
+commit-build:
+	git add ./bin/lexemic ./package.json
+	git commit -m "Bump version."
 
 tag: status
 	git tag -a v$(VERSION) -m "Tagging v$(VERSION)"
