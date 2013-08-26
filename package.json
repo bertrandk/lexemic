@@ -1,6 +1,6 @@
 {
   "name": "lexemic",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Tools for working with human language data.",
   "bin": "./bin/lexemic",
   "scripts": {
