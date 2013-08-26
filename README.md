@@ -22,7 +22,7 @@ Tools for working with human language data.
 ## Usage
 
 ```
-$ lexemic [command] [implementation] [target]
+$ lexemic [command] [implementation] [target...]
 ```
 NOTE: The `target` may be an inline string or the path to a text file encoded as UTF-8.
 
@@ -48,5 +48,7 @@ $ lexemic sentiment "I am mad at you." # => {
 ## Issues
 
 ## Copyright
+
+Copyright (c) 2013 Bertrand Karerangabo
 
 See `LICENSE.txt` for details.
