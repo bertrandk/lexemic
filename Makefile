@@ -27,5 +27,5 @@ tag: status
 	git tag -a v$(VERSION) -m "Tagging v$(VERSION)"
 	git push --tags
 
-public: status
+publish: status
 	npm publish
