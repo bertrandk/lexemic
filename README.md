@@ -57,6 +57,9 @@ affects and positive values for texts with overall positive affects.
 
 ## Issues
 
+If you need help, find a bug, want to request a feature or want to contribute, please
+[create an issue](https://github.com/bertrandk/lexemic/issues/new).
+
 ## Copyright
 
 Copyright (c) 2013 Bertrand Karerangabo
