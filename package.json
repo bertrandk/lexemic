@@ -1,9 +1,8 @@
 {
   "name": "lexemic",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Tools for working with human language data.",
-  "main": "index.js",
-  "bin": "./index.js",
+  "bin": "./bin/lexemic",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
