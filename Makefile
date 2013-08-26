@@ -5,10 +5,10 @@ all: build-dev
 release: build-prod tag publish
 
 build-dev:
-	$(CLJSC) ./src '{:optimizations :simple :pretty-print true :target :nodejs}' > ./lexemic.js
+	$(CLJSC) ./src '{:optimizations :whitespace :pretty-print true :target :nodejs}' > ./lexemic.js
 
 build-prod:
-	$(CLJSC) ./src '{:optimizations :advanced :target :nodejs}' > ./bin/lexemic
+	$(CLJSC) ./src '{:optimizations :simple :target :nodejs}' > ./bin/lexemic
 	chmod +x ./bin/lexemic
 
 clean:
