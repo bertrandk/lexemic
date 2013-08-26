@@ -9,6 +9,7 @@ build-dev:
 
 build-prod:
 	$(CLJSC) ./src '{:optimizations :advanced :target :nodejs}' > index.js
+	chmod +x ./index.js
 
 clean:
 	rm -rf ./out
