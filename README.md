@@ -44,6 +44,16 @@ $ lexemic sentiment "I am mad at you." # => {
                                                        }  
                                              }
 ```
+Sentiment analysis attempts to determine the affective state of the
+speaker or the writer. The default implementation returns an
+[EDN](https://github.com/edn-format/edn) map of this analysis. The `:score`
+represents the number of emotive words in the text while the
+`:comparative` rates the occurrence of these words with regards to the
+length of the text. The nested values (i.e. those under `:positive` and
+`:negative` ) provide a list of matched `:words` and take only into account
+their respective affectivity. The top level values incorporate both
+affective states – returning negative values for texts with overall negative
+affects and positive values for texts with overall positive affects. 
 
 ## Issues
 
