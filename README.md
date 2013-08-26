@@ -1,4 +1,6 @@
-# lexemic
+# lexemic  
+[![NPM
+version](https://badge.fury.io/js/lexemic.png)](http://badge.fury.io/js/lexemic)
 
 ## Requirements
 
