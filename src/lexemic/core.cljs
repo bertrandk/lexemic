@@ -3,7 +3,7 @@
             [lexemic.sentiment.simple :as sentiment]))
 
 (def ^:private version
-  (.-version (node/require "../package.json")))
+  (.-version (node/require (str (.cwd js/process) "/package.json"))))
 (def ^:private fs
   (node/require "fs"))
 
