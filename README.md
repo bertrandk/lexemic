@@ -6,7 +6,7 @@
 
 ## Install
 
-	npm install lexemic
+	npm install lexemic -g
 
 ## Description
 
