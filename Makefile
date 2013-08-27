@@ -2,7 +2,7 @@ CLJSC = $(CLOJURESCRIPT_HOME)/bin/cljsc
 VERSION = `node -e "console.log(require('./package.json').version)"`
 
 all: build-dev
-release: build-prod commit-build tag publish
+release: build-prod publish commit-build tag
 
 build-dev:
 	$(CLJSC) ./src '{:optimizations :whitespace :pretty-print true :target :nodejs}' > ./bin/lexemic-dev
