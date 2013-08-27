@@ -2,7 +2,7 @@ CLJSC = $(CLOJURESCRIPT_HOME)/bin/cljsc
 VERSION = `node -e "console.log(require('./package.json').version)"`
 
 all: build-dev
-release: build-prod publish commit-build tag
+release: build-prod commit-build tag publish
 
 build-dev:
 	$(CLJSC) ./src '{:optimizations :whitespace :pretty-print true :target :nodejs}' > ./bin/lexemic-dev
@@ -25,7 +25,14 @@ status:
 		false; \
 	fi
 
-commit-build:
+version-check:
+	@tag=$$(git describe --abbrev=0 --tags); \
+	if test $${tag} = "v$(VERSION)"; then \
+		echo You need to change the project version number before release. >&2; \
+		false; \
+	fi
+
+commit-build: version-check
 	git add ./bin/lexemic ./package.json
 	git commit -m "Bump version."
 
