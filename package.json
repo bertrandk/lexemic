@@ -33,6 +33,7 @@
     "text",
     "linguistic"
   ],
+  "preferGlobal": true,
   "author": "bertrandk",
   "license": "MIT",
   "bugs": {
