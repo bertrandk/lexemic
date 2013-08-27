@@ -13,8 +13,8 @@ build-prod:
 	chmod +x ./bin/lexemic
 
 clean:
-	rm -rf ./out
-	rm ./bin/lexemic-dev
+	if [ -d out ]; then rm -rf out; fi;
+	if [ -e bin/lexemic-dev ]; then rm bin/lexemic-dev; fi;
 
 status:
 	@status=$$(git status --porcelain --untracked-files=no); \
