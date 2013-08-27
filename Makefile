@@ -14,7 +14,7 @@ build-prod:
 
 clean:
 	rm -rf ./out
-	rm lexemic.js
+	rm ./bin/lexemic-dev
 
 status:
 	@status=$$(git status --porcelain --untracked-files=no); \
