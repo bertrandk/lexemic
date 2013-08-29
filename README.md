@@ -57,6 +57,24 @@ their respective affectivity. The top level values incorporate both
 affective states – returning negative values for texts with overall negative
 affects and positive values for texts with overall positive affects. 
 
+
+### Stemming
+
+```
+$ lexemic stem "My education has been educational" # => #{"My"
+                                                          "educ"
+                                                          "ha"
+                                                          "been"}
+```
+Stemming attempts to reduce inflected words to their stem. This is
+useful in reducing your working set of words and expanding possible
+search matches. The default implementation uses the porter
+algorithm, though you may explicitly specify an implementation – `-p`
+and `-porter` for the porter algorithm (standard and gentle) or `-l` and
+`-lancaster` for the lancaster algorithm (much more aggressive). This
+command returns an [EDN](https://github.com/edn-format/edn) set of the
+reduced working set.
+
 ## Issues
 
 If you need help, find a bug, want to request a feature or want to contribute, please

@@ -1,6 +1,9 @@
 (ns lexemic.core
+  (:use [clojure.string :only [split]])
   (:require [cljs.nodejs :as node]
-            [lexemic.sentiment.simple :as sentiment]))
+            [lexemic.sentiment.simple :as sentiment]
+            [lexemic.stem.lancaster :as lancaster]
+            [lexemic.stem.porter :as porter]))
 
 (def ^:private version
   (.-version (node/require (str js/__dirname "/../package.json"))))
@@ -10,7 +13,6 @@
 (def ^:private spacer "")
 (def ^:private version (str "Lexemic v" version))
 (def ^:private usage-banner "Usage: lexemic [command] [implementation] [target...]")
-(def ^:private supported-commands #{"help" "sentiment"})
 
 (defn- show-help []
   (do
@@ -20,7 +22,12 @@
 
 (defn- run [cmd impl text]
   (condp = cmd
-    "sentiment" (prn (sentiment/analyse text))
+    "sentiment" (prn (sentiment/analyse (print-str text)))
+    "stem" (let [words (split (apply str text) #"\s+")]
+             (condp contains? impl
+               #{"-lancaster" "-l"} (prn (set (map lancaster/stem words)))
+               #{"-porter" "-p"} (prn (set (map porter/stem words)))
+               (prn (set (map porter/stem words)))))
     (show-help)))
 
 (defn -main [& args]
@@ -37,10 +44,9 @@
                      (if (file? x)
                        (.readFileSync fs x "utf8")
                        (identity x)))
-        contents (map get-string targets)
-        input (print-str contents)]
-    (if-let [cmd (supported-commands command)]
-      (run cmd impl input)
+        input (map get-string targets)]
+    (if command
+      (run command impl input)
       (show-help))))
 
 (set! *main-cli-fn* -main)
