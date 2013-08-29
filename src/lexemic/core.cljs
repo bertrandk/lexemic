@@ -3,7 +3,8 @@
   (:require [cljs.nodejs :as node]
             [lexemic.sentiment.simple :as sentiment]
             [lexemic.stem.lancaster :as lancaster]
-            [lexemic.stem.porter :as porter]))
+            [lexemic.stem.porter :as porter]
+            [lexemic.tokenize.treebank :as treebank]))
 
 (def ^:private version
   (.-version (node/require (str js/__dirname "/../package.json"))))
@@ -28,6 +29,8 @@
                #{"-lancaster" "-l"} (prn (set (map lancaster/stem words)))
                #{"-porter" "-p"} (prn (set (map porter/stem words)))
                (prn (set (map porter/stem words)))))
+    "tokenize" (let [words (apply str text)]
+                 (prn (treebank/tokenize words)))
     (show-help)))
 
 (defn -main [& args]

@@ -18,7 +18,7 @@ Tools for working with human language data.
 
 * Sentiment analysis
 * Stemming
-* Tokenizing
+* Tokenization
 * Statistical analysis
 
 ## Usage
@@ -57,7 +57,6 @@ their respective affectivity. The top level values incorporate both
 affective states – returning negative values for texts with overall negative
 affects and positive values for texts with overall positive affects. 
 
-
 ### Stemming
 
 ```
@@ -69,11 +68,26 @@ $ lexemic stem "My education has been educational" # => #{"My"
 Stemming attempts to reduce inflected words to their stem. This is
 useful in reducing your working set of words and expanding possible
 search matches. The default implementation uses the porter
-algorithm, though you may explicitly specify an implementation – `-p`
+algorithm, though you may explicitly specify an implementation; `-p`
 and `-porter` for the porter algorithm (standard and gentle) or `-l` and
 `-lancaster` for the lancaster algorithm (much more aggressive). This
 command returns an [EDN](https://github.com/edn-format/edn) set of the
 reduced working set.
+
+### Tokenization
+
+```
+$ lexemic tokenize "This is a sample sentence." # => ["This"
+                                                      "is"
+                                                      "a"
+                                                      "sample"
+                                                      "sentence"
+                                                      "."]
+```
+Tokenization attempts to break a text into its desired constituent
+parts – typically, that is into words. This command return an
+[EDN](https://github.com/edn-format/edn) vector of the result of this
+process. 
 
 ## Issues
 
