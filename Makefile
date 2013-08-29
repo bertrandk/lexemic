@@ -5,7 +5,7 @@ all: build-dev
 release: build-prod commit-build tag publish
 
 build-dev:
-	$(CLJSC) ./src '{:optimizations :whitespace :pretty-print true :target :nodejs}' > ./bin/lexemic-dev
+	$(CLJSC) ./src '{:optimizations :simple :pretty-print true :target :nodejs}' > ./bin/lexemic-dev
 	chmod +x ./bin/lexemic-dev
 
 build-prod:
