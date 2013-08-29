@@ -5,6 +5,7 @@ version](https://badge.fury.io/js/lexemic.png)](http://badge.fury.io/js/lexemic)
 ## Requirements
 
 * Node.js (v0.10.17+)
+* npm (v1.3.9+)
 
 ## Install
 
