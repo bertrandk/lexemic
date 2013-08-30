@@ -4,7 +4,8 @@
             [lexemic.sentiment.simple :as sentiment]
             [lexemic.stem.lancaster :as lancaster]
             [lexemic.stem.porter :as porter]
-            [lexemic.tokenize.treebank :as treebank]))
+            [lexemic.tokenize.treebank :as treebank]
+            [lexemic.stats.levenshtein :as levenshtein]))
 
 (def ^:private version
   (.-version (node/require (str js/__dirname "/../package.json"))))
@@ -31,6 +32,9 @@
                (prn (set (map porter/stem words)))))
     "tokenize" (let [words (apply str text)]
                  (prn (treebank/tokenize words)))
+    "distance" (let [text1 (first text)
+                     text2 (second text)]
+                 (prn (levenshtein/calculate text1 text2)))
     (show-help)))
 
 (defn -main [& args]

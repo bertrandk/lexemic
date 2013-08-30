@@ -56,7 +56,7 @@ length of the text. The nested values (i.e. those under `:positive` and
 `:negative` ) provide a list of matched `:words` and take only into account
 their respective affectivity. The top level values incorporate both
 affective states – returning negative values for texts with overall negative
-affects and positive values for texts with overall positive affects. 
+affects and positive values for texts with overall positive affects.
 
 ### Stemming
 
@@ -86,9 +86,23 @@ $ lexemic tokenize "This is a sample sentence." # => ["This"
                                                       "."]
 ```
 Tokenization attempts to break a text into its desired constituent
-parts – typically, that is into words. This command return an
+parts – typically, that is into words. This command returns an
 [EDN](https://github.com/edn-format/edn) vector of the result of this
-process. 
+process.
+
+### Statistical analysis
+
+#### Levenshtein distance
+
+```
+$ lexemic distance "This is a sentence." "This is a similar sentence." # => 8
+```
+Levenshtein distance measures the distance between two strings of text, often
+two documents. Informally, this distance corresponds to the minimum
+number of single-character edits required to change one string into the
+other (e.g. in the above example, '8' represents the insertion of 1
+space and the 7 letters of the word 'similar'). This command returns an
+integer representing the result of this process.
 
 ## Issues
 

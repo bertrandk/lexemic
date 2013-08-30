@@ -1,5 +1,5 @@
 (ns lexemic.stats.levenshtein
-  (:use [clojure.string :only [blanks?]]))
+  (:use [clojure.string :only [blank?]]))
 
 (defn create-element
   [char1 char2 previous-row current-row idx]
@@ -22,11 +22,11 @@
         previous-row
         (conj current-row (create-element char1 char2 previous-row current-row idx))))))
 
-(defn levenshtein
+(defn calculate
   "Calculate the edit distance between two strings."
   ([str1 str2]
     (let [initial-row (vec (range (inc (count str2))))]
-      (levenshtein 1 initial-row str1 str2)))
+      (calculate 1 initial-row str1 str2)))
   ([row-no previous-row str1 str2]
     (let [next-row (create-row (first str1) str2 previous-row [row-no])
           rest-str1 (subs str1 1)]
